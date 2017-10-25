@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {connect} from 'redux-zero/react';
+import {Grid, Row, Col} from 'react-bootstrap';
+import {addComment, onChangeName, onChangeComment } from './Actions';
+import {Head} from './Components';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+const App = ({comments, inputName, inputComment}) =>  {
+  return (
+    <Grid>
+      <Row>
+        <Col mdOffset={3} md={7}>
+          <Head title="New Comment" addComment={addComment} onChangeName={onChangeName} onChangeComment={onChangeComment}/>
+        </Col>
+      </Row>
+    </Grid>
+  );
 }
 
-export default App;
+const mapToPlay = ({comments, inputName, inputComment }) => ({comments, inputName, inputComment})
+export default connect(mapToPlay)(App);
+
