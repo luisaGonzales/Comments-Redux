@@ -8,15 +8,16 @@ let comments = [
     {
         userName: "Kely Vargaya",
         userComment: "I like this page"
+    },
+    {
+        userName: "Alejandra Adrián",
+        userComment: "Like this ..."
     }
 ];
 
 const initialState = {
     comments: comments,
-    inputName: "",
-    inputComment: ""
 }
 
 const store = createStore(initialState);
-
 export default store; 
