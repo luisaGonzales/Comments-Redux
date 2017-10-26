@@ -1,59 +1,54 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'redux-zero/react';
-import {Grid, Row, Col} from 'react-bootstrap';
-import {addComment, onChangeName, onChangeComment } from './Actions';
-import {Head} from './Components';
+import {Grid, Row, Col, FormGroup, FormControl, InputGroup, Button} from 'react-bootstrap';
+import {addComment, removeComment} from './Actions';
+import {Comment} from './Components';
 
 const App = ({ comments }) => {
-  const todoList = comments.map((comment, index) => {
-    return(
-      <li key={index}> {comment.text} </li>
-    );
-});
-
-  const onSubmit = e => {
-     e.preventDefault();
-     addTodo(this.refInput.value);
-  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if(this.name.value && this.comment.value){
+      addComment(this.name.value, this.comment.value);
+      this.name.value = '';
+      this.comment.value = '';
+    }
+  }
   return (
-     <div className="wrapper">
-        <header>
-           <h1>RSVP</h1>
-           <p> Registration App </p>
-           <form onSubmit={onSubmit}>
-              <input
-                 type="text"
-                 name="name"
-                 placeholder="Invite Someone"
-                 ref={e => (this.refInput = e)}
-              />
-              <button type="submit" name="submit" value="submit">
-                 Submit
-              </button>
-           </form>
-        </header>
-        <div className="main">
-           <h2>Invitees</h2>
-           <ul id="invitedList">{todoList}</ul>
+    <Grid className='box'>
+      <div className='comments'>
+        <h3 className='titles'>NEW COMMENT</h3>
+        <form onSubmit={onSubmit}>
+          <FormGroup>
+            <InputGroup className="inputs name">
+              <FormControl type="text" placeholder="Name" inputRef={ref => { this.name = ref }} />
+            </InputGroup>
+          </FormGroup>
+          <FormGroup>
+            <InputGroup className="inputs">
+              <FormControl componentClass='textarea' type="text" placeholder="Comment" inputRef={ref => { this.comment = ref }} />
+            </InputGroup>
+          </FormGroup>
+          <Button type="submit" id='post'>
+            Post Comment
+          </Button>
+        </form>
+      </div>
+      <div className=''>
+        <h3>
+          <span><strong>Comments</strong></span>
+        </h3>
+        <p className="counter">{comments.length} comments</p>
+        <div>
+          {
+            comments.map((item, index) => <Comment key={index} name={item.name} comment={item.comment} index={index} />)
+          }
         </div>
-     </div>
-  );
-};
-
-const App = ({comments, inputName, inputComment}) =>  {
-  const commentList = comments.map (comment => <>)
-  return (
-    <Grid>
-      <Row>
-        <Col mdOffset={3} md={7}>
-          <Head title="New Comment" addComment={addComment} onChangeName={onChangeName} onChangeComment={onChangeComment}/>
-        </Col>
-      </Row>
+      </div>
     </Grid>
   );
 }
 
-const mapToPlay = ({comments, inputName, inputComment }) => ({comments, inputName, inputComment})
+const mapToPlay = ({comments}) => ({comments})
 export default connect(mapToPlay)(App);
 

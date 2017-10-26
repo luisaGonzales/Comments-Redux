@@ -1,28 +1,76 @@
-.App {
-  text-align: center;
+.box {
+  background: #6da2a9;
+  width: 60%;
+  padding-bottom: 200px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 1%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.comments {
+  background: #9fcbd2;
+  border-radius: 10px;
+  padding: 1%;
+  margin-top: 25px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.titles {
+  color: #7eabb1;
+}
+
+.comments .inputs{
+  width: 100%;
+  border-radius: 10px;
+  height: 25px;
+  margin-bottom: 8px;
+}
+
+.comments button, .comments:hover button {
+  background-color: #fbe783;
+  border: 2px solid #fbe783;
+  width: 30%;
+  border-radius: 10px;
+  height: 25px;
+  color: #6da2a9;
+  font-weight: bold;
+  align-content: center;
+}
+
+.counter {
+  color: black;
+  margin-top: 5px;
+}
+
+ul {
+  list-style: none;
+}
+
+.name {
   color: white;
+  border-bottom: 1px solid white;
+  text-transform: uppercase;
 }
 
-.App-title {
-  font-size: 1.5em;
+.commentuser{
+  color: white;
+  font-style: oblique;
+  text-transform: capitalize;
 }
 
-.App-intro {
-  font-size: large;
+.result button, .result:hover button {
+  background: transparent !important;
+  border: none;
+  margin-top: -5px;
+  display: flex;
+
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+a, a:hover {
+  color: white;
+  margin-left: -12px;
+  margin-top: -10px;
+}
+
+.result {
+  margin-bottom: 15px;
 }

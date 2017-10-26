@@ -1,14 +1,20 @@
 import store from './Store';
 
+export const addComment = (name, comment) => {
+    const comments = [...store.getState().comments]
+    const newComment= comments.concat( {
+		name: name,
+		comment: comment
+	});
 
-export const addComment = () => {
-
+	store.setState({
+		comments: newComment
+	})
 }
 
-export const onChangeName = () => {
-
-}
-
-export const onChangeComment = () => {
-
+export const removeComment = (index) => {
+    const comments =  store.getState().comments.filter( (item, idx) => idx != index );
+	store.setState({
+		comments: comments
+	})
 }

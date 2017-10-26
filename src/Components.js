@@ -1,75 +1,26 @@
 import React, {Component} from 'react';
 import {Grid, Row, Col, Button} from 'react-bootstrap';
+import {removeComment} from './Actions'
 
-// export const Head = ({title, addComment, onChangeName, onChangeComment, comments }) => {
-//     return (
-//         <div>
-//             <Row className="text-center">
-//                 <Col md={12}>
-//                     <h1>{title}</h1>
-//                 </Col>
-//             </Row>
-//             <Row>
-//                 <Col md={12}>
-//                     <form onSubmit={addComment}>
-//                         <input 
-//                             type="text"
-//                             placeholder="addName"
-//                             ref={e => (this.refInput = e)}
-//                         />
-//                         <input 
-//                             type="text"
-//                             placeholder="addComment"
-//                             // ref={e => (this.refInput = e)}
-//                         />
-//                         <button 
-//                             type="submit"
-//                             >
-//                         Post Comment
-//                         </button>
-//                     </form>
-//                 </Col>
-//                 <Col md={12}>
-//                 <div className="main">
-//                     <h2>Invitees</h2>
-//                     <ul id="invitedList">{comments}</ul>
-//                 </div>
-//                 </Col>
-//             </Row>
-//         </div>
-//     );
-// }
+export const Comment = ({name, comment, index}) => {
+    return (
+        <div className='caja comentario'>
+            <Row>
+                <Col md={2} sm={3} xs={4} className='text-center'>
+                    <img src="https://inexus.eu/themes/resurrection/images/avatar/3.png" width="100px"/>
+                </Col>
+                <Col md={10} sm={9} xs={8}>
+                    <h3 className="name">{name}</h3>
+                    <p className="commentuser">{comment}</p>
+                    <div className="result">
+                        <Button onClick={() => removeComment(index)}>
+                            <a>Delete Comment
+                            </a>
+                        </Button>
+                    </div>
+                </Col>
+            </Row>
 
-// export const CommentList = ({comments, userName, userComment}) => {
-//     return (
-//         comments.map((comment, index) => {
-//             return (
-//                 <Comment userName={userName} userComment={userComment}/>
-//             );
-//         })
-
-//     );
-// }
-
-// const Comment = ({userName, userComment}) => {
-//     return (
-//         <div>
-//             <Row>
-//                 <Col md={2}>
-//                     <img src="https://s.ytimg.com/yts/img/avatar_48-vfllY0UTT.png"/>
-//                 </Col>
-//                 <Col md={10}>
-//                     {userName}
-//                 </Col>
-//                 <Col md={10}>
-//                     {userComment}
-//                 </Col>
-//             </Row>
-//             <Row>
-//                 <a>Delete Comment</a>
-//                 <a>Report as abuse</a>
-//             </Row>
-//         </div>
-//     );
-// }
-
+        </div>
+    );
+}
